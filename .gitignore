@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# graphify (intern kunskapsgraf – ej en del av sajten)
+/graphify-out/
