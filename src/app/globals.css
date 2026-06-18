@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+  Café de Nice — designsystem (franska Rivieran)
+  Ivory bakgrund · espressobrun text · medelhavsazur accent · varm terrakotta.
+  Färgerna är valda för god kontrast (WCAG AA). Justera fritt vid behov.
+*/
+@theme {
+  /* Bakgrund & ytor */
+  --color-cream: #fbf7ef; /* sidans varma ivory-bakgrund */
+  --color-ivory: #fffdf8; /* kort/ytor, en aning ljusare */
+
+  /* Text */
+  --color-espresso: #33241b; /* mörk espressobrun – rubriker & brödtext */
+  --color-mocha: #5c4a3d; /* dämpad brun – sekundär text */
+
+  /* Accenter */
+  --color-azur: #1f7a99; /* medelhavsblå – havet i Nice (dekor/borders) */
+  --color-azur-deep: #156383; /* mörkare azur – länkar/text (bättre kontrast) */
+  --color-terracotta: #c8794b; /* varm terrakotta/ockra – komplement */
+  --color-terracotta-soft: #e8c4a6; /* mjuk terrakotta – subtila ytor */
+
+  /* Typografi */
+  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-espresso);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Tydlig, varm fokusmarkering för tangentbordsnavigering (a11y) */
+:focus-visible {
+  outline: 2px solid var(--color-azur-deep);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Respektera användare som föredrar mindre rörelse */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
